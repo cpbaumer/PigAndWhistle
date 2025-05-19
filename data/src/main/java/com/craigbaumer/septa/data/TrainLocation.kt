@@ -1,5 +1,8 @@
 package com.craigbaumer.septa.data
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
 @Serializable
 data class TrainLocation(
     val lat: String, // Or Double if you prefer to parse it directly
@@ -13,10 +16,10 @@ data class TrainLocation(
     @SerialName("BlockID")
     val blockID: String,
     @SerialName("Direction")
-    val direction: String, // Seems to be "N/A", consider an Enum or String
+    val direction: String = "", // Seems to be "N/A", consider an Enum or String
     val destination: String,
-    val heading: String? = null, // Assuming heading can be null
-    val late: Int,
+    // val heading: String? = null, // Assuming heading can be null
+    val late: Int = 0,
     @SerialName("next_stop_id")
     val nextStopId: String,
     @SerialName("next_stop_name")
@@ -24,10 +27,10 @@ data class TrainLocation(
     @SerialName("next_stop_sequence")
     val nextStopSequence: Int,
     @SerialName("estimated_seat_availability")
-    val estimatedSeatAvailability: String, // Consider an Enum if values are fixed
+    val estimatedSeatAvailability: String = "", // Consider an Enum if values are fixed
     @SerialName("Offset")
-    val offset: Int,
+    val offset: Int = 0,
     @SerialName("Offset_sec")
-    val offsetSec: String, // Or Int if you prefer to parse it directly
-    val timestamp: Long // Assuming it's a Unix timestamp
+    val offsetSec: String = "", // Or Int if you prefer to parse it directly
+    val timestamp: Long, // Assuming it's a Unix timestamp
 )
