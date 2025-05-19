@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Pig and Whistle</string>
+    <string name="next_stop">Next Stop: %s</string>
+    <string name="destination">Destination: %s</string>
+    <string name="on_time">On Time</string>
+    <string name="late_minutes">%d minutes late</string>
+    <string name="none">None</string>
+    <string name="septa_logo">SEPTA Logo</string>
 </resources>

@@ -13,13 +13,35 @@ class MainViewModel : ViewModel() {
 
     private val septaClient = SeptaClient.instance
 
-    private val _state = MutableStateFlow(TrainLocations(trainLocations = emptyList()))
-    val state: StateFlow<TrainLocations> = _state.asStateFlow()
+    private val _state = MutableStateFlow(TrainState())
+    val state: StateFlow<TrainState> = _state.asStateFlow()
 
-    fun getTrainLocations() {
-        viewModelScope.launch {
-            val locations = septaClient.getTrainLocations()
-            _state.value = locations
+    fun onEvent(event: TrainEvent) {
+        when (event) {
+            is TrainEvent.Refresh -> getTrainLocations()
+            is TrainEvent.Start -> getTrainLocations()
         }
     }
+
+    private fun getTrainLocations() {
+        _state.value = _state.value.copy(isRefreshing = true)
+
+        viewModelScope.launch {
+            val locations = septaClient.getTrainLocations()
+            _state.value = TrainState(
+                trainLocations = locations,
+                isRefreshing = false,
+            )
+        }
+    }
+}
+
+data class TrainState(
+    val trainLocations: TrainLocations = TrainLocations(trainLocations = emptyList()),
+    val isRefreshing: Boolean = false,
+)
+
+sealed interface TrainEvent {
+    data object Refresh : TrainEvent
+    data object Start : TrainEvent
 }

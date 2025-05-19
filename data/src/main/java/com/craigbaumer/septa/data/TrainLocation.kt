@@ -21,11 +21,11 @@ data class TrainLocation(
     // val heading: String? = null, // Assuming heading can be null
     val late: Int = 0,
     @SerialName("next_stop_id")
-    val nextStopId: String,
+    val nextStopId: String? = null,
     @SerialName("next_stop_name")
-    val nextStopName: String,
+    val nextStopName: String? = null,
     @SerialName("next_stop_sequence")
-    val nextStopSequence: Int,
+    val nextStopSequence: Int? = null,
     @SerialName("estimated_seat_availability")
     val estimatedSeatAvailability: String = "", // Consider an Enum if values are fixed
     @SerialName("Offset")
