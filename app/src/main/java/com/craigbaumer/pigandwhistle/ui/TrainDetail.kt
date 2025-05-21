@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.craigbaumer.pigandwhistle.R
 import com.craigbaumer.pigandwhistle.ui.theme.PigAndWhistleTheme
-import com.craigbaumer.septa.data.TrainLocation
+import com.craigbaumer.septa.data.models.TrainLocation
 
 @Composable
 fun TrainDetail(

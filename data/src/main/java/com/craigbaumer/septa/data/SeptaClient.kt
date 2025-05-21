@@ -5,22 +5,26 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
+import javax.inject.Inject
 
 
-object SeptaClient {
+class SeptaClient @Inject constructor() {
 
-    private const val BASE_URL = "https://www3.septa.org/api/"
+    companion object {
+        const val BASE_URL = "https://www3.septa.org/api/"
+    }
 
     private val okHttpClient = OkHttpClient.Builder().build()
 
     private val json = Json {
-        ignoreUnknownKeys = true // Good practice for API evolution
+        ignoreUnknownKeys = true
         prettyPrint = false // Set to true for easier debugging of JSON output
     }
 
     val instance: TrainService by lazy {
-        val retrofit =
-            Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient)
+        val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(okHttpClient)
                 .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
                 .build()
         retrofit.create(TrainService::class.java)

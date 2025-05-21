@@ -20,8 +20,8 @@ import com.craigbaumer.pigandwhistle.R
 import com.craigbaumer.pigandwhistle.TrainEvent
 import com.craigbaumer.pigandwhistle.TrainState
 import com.craigbaumer.pigandwhistle.ui.theme.PigAndWhistleTheme
-import com.craigbaumer.septa.data.TrainLocation
-import com.craigbaumer.septa.data.TrainLocations
+import com.craigbaumer.septa.data.models.TrainLocation
+import com.craigbaumer.septa.data.models.TrainLocations
 import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)

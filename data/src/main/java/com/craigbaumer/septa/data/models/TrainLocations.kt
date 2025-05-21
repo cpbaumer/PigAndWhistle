@@ -1,4 +1,4 @@
-package com.craigbaumer.septa.data
+package com.craigbaumer.septa.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="Pig_and_Whistle.data.test" target="11" />
+      <module name="Pig_and_Whistle.data2" target="11" />
+      <module name="Pig_and_Whistle.data2.main" target="11" />
+      <module name="Pig_and_Whistle.data2.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

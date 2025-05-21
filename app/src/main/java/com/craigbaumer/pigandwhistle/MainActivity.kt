@@ -19,7 +19,6 @@ import com.craigbaumer.pigandwhistle.navigation.Home
 import com.craigbaumer.pigandwhistle.ui.TrainDetail
 import com.craigbaumer.pigandwhistle.ui.Trains
 import com.craigbaumer.pigandwhistle.ui.theme.PigAndWhistleTheme
-import com.craigbaumer.septa.data.TrainLocation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
