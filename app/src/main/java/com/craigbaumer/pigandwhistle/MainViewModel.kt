@@ -3,11 +3,13 @@ package com.craigbaumer.pigandwhistle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.craigbaumer.septa.data.SeptaClient
+import com.craigbaumer.septa.data.TrainLocation
 import com.craigbaumer.septa.data.TrainLocations
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class MainViewModel : ViewModel() {
 
@@ -23,7 +25,13 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    fun getTripLocation(trip: String) : TrainLocation? {
+        return _state.value.trainLocations.trainLocations.find { it.trip == trip }
+    }
+
     private fun getTrainLocations() {
+        Timber.i("getTrainLocations")
+
         _state.value = _state.value.copy(isRefreshing = true)
 
         viewModelScope.launch {

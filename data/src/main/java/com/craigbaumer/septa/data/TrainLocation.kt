@@ -33,4 +33,26 @@ data class TrainLocation(
     @SerialName("Offset_sec")
     val offsetSec: String = "", // Or Int if you prefer to parse it directly
     val timestamp: Long, // Assuming it's a Unix timestamp
-)
+) {
+    companion object {
+        val SAMPLE_LOCATION = TrainLocation(
+            lat = "40.050251",
+            lng = "-75.347250",
+            label = "136",
+            routeId = "M1",
+            trip = "71328",
+            vehicleID = "136",
+            blockID = "4019",
+            direction = "N/A",
+            destination = "69th Street Transit Center",
+            late = 2,
+            nextStopId = "32192",
+            nextStopName = "Radnor - NHSL",
+            nextStopSequence = 7,
+            estimatedSeatAvailability = "NOT_AVAILABLE",
+            offset = 2,
+            offsetSec = "102",
+            timestamp = 1747685589,
+        )
+    }
+}

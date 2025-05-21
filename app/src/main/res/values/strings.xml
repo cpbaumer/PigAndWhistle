@@ -4,6 +4,14 @@
     <string name="destination">Destination: %s</string>
     <string name="on_time">On Time</string>
     <string name="late_minutes">%d minutes late</string>
+    <string name="lat">Lat: %s</string>
+    <string name="lng">Lng: %s</string>
+    <string name="label">Label: %s</string>
+    <string name="route_id">Route ID: %s</string>
+    <string name="trip">Trip: %s</string>
+    <string name="vehicle_id">Vehicle ID: %s</string>
+    <string name="block_id">Block ID: %s</string>
+    <string name="direction">Direction: %s</string>
     <string name="none">None</string>
     <string name="septa_logo">SEPTA Logo</string>
 </resources>

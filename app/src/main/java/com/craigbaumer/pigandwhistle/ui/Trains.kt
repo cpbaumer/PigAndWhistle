@@ -2,6 +2,7 @@ package com.craigbaumer.pigandwhistle.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,6 +22,7 @@ import com.craigbaumer.pigandwhistle.TrainState
 import com.craigbaumer.pigandwhistle.ui.theme.PigAndWhistleTheme
 import com.craigbaumer.septa.data.TrainLocation
 import com.craigbaumer.septa.data.TrainLocations
+import timber.log.Timber
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,26 +30,34 @@ fun Trains(
     modifier: Modifier = Modifier,
     trainState: TrainState,
     onEvent: (TrainEvent) -> Unit,
+    onNavigateToDetail: (String) -> Unit,
 ) {
     PullToRefreshBox(
         isRefreshing = trainState.isRefreshing,
         onRefresh = { onEvent(TrainEvent.Refresh) },
-        modifier = modifier
+        modifier = modifier,
     ) {
         LazyColumn(
-            modifier = modifier.background(color = MaterialTheme.colorScheme.background)
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
         ) {
             item {
                 Row {
                     Image(
                         painter = painterResource(R.drawable.septa_logo),
                         contentDescription = stringResource(R.string.septa_logo),
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
                     )
                 }
             }
             items(trainState.trainLocations.trainLocations) { trainLocation ->
-                Train(trainLocation = trainLocation)
+                Train(
+                    modifier = Modifier.clickable(
+                        onClick = {
+                            Timber.i("Navigation to $trainLocation")
+                            onNavigateToDetail(trainLocation.trip) },
+                    ),
+                    trainLocation = trainLocation,
+                )
             }
         }
     }
@@ -61,29 +71,14 @@ fun TrainsPreview() {
             trainState = TrainState(
                 trainLocations = TrainLocations(
                     trainLocations = listOf(
-                        TrainLocation(
-                            lat = "40.050251",
-                            lng = "-75.347250",
-                            label = "136",
-                            routeId = "M1",
-                            trip = "71328",
-                            vehicleID = "136",
-                            blockID = "4019",
-                            direction = "N/A",
-                            destination = "69th Street Transit Center",
-                            late = 2,
-                            nextStopId = "32192",
-                            nextStopName = "Radnor - NHSL",
-                            nextStopSequence = 7,
-                            estimatedSeatAvailability = "NOT_AVAILABLE",
-                            offset = 2,
-                            offsetSec = "102",
-                            timestamp = 1747685589,
-                        ),
+                        TrainLocation.SAMPLE_LOCATION,
+                        TrainLocation.SAMPLE_LOCATION,
+                        TrainLocation.SAMPLE_LOCATION,
                     ),
                 ),
             ),
             onEvent = {},
+            onNavigateToDetail = {},
         )
     }
 }
