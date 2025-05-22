@@ -1,5 +1,6 @@
 [versions]
 agp = "8.11.0-alpha10"
+appcompat = "1.7.0"
 kotlin = "2.1.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -14,10 +15,10 @@ jetbrainsKotlinJvm = "2.1.21"
 retrofit = "3.0.0"
 hilt = "2.56.2"
 ksp = "2.1.21-2.0.1"
-timber = "5.0.1"
-navigation = "2.9.0"
-appcompat = "1.7.0"
 material = "1.12.0"
+navigation = "2.9.0"
+paparazzi = "2.0.0-alpha01'"
+timber = "5.0.1"
 truth = "1.4.4"
 turbine = "1.2.0"
 
@@ -39,6 +40,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+paparazzi = { module = "app.cash.paparazzi:paparazzi", version.ref = "paparazzi" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref="retrofit"}
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
@@ -57,4 +59,4 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-
+paparazzi = { id = "app.cash.paparazzi", version.ref = "paparazzi" }

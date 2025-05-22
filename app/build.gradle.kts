@@ -4,17 +4,18 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
+    id("app.cash.paparazzi")
     kotlin("plugin.serialization") version "2.1.20"
 }
 
 android {
     namespace = "com.craigbaumer.pigandwhistle"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.craigbaumer.pigandwhistle"
         minSdk = 35
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -61,6 +62,7 @@ dependencies {
     testImplementation(libs.truth)
     testImplementation(libs.turbine)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.paparazzi)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
