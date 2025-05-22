@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,8 +32,6 @@ class MainViewModel @Inject constructor(
     }
 
     private fun getTrainLocations() {
-        Timber.i("getTrainLocations")
-
         _state.value = _state.value.copy(isRefreshing = true)
 
         viewModelScope.launch {
