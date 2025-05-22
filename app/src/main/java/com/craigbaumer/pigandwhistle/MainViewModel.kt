@@ -2,7 +2,6 @@ package com.craigbaumer.pigandwhistle
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.craigbaumer.septa.data.SeptaClient
 import com.craigbaumer.septa.data.TrainRepository
 import com.craigbaumer.septa.data.models.TrainLocation
 import com.craigbaumer.septa.data.models.TrainLocations
