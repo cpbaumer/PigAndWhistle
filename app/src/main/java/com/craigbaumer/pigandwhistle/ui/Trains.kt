@@ -3,10 +3,13 @@ package com.craigbaumer.pigandwhistle.ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
@@ -37,27 +40,37 @@ fun Trains(
         onRefresh = { onEvent(TrainEvent.Refresh) },
         modifier = modifier,
     ) {
-        LazyColumn(
-            modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
-        ) {
-            item {
-                Row {
-                    Image(
-                        painter = painterResource(R.drawable.septa_logo),
-                        contentDescription = stringResource(R.string.septa_logo),
-                        modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
-                    )
-                }
-            }
-            items(trainState.trainLocations.trainLocations) { trainLocation ->
-                Train(
-                    modifier = Modifier.clickable(
-                        onClick = {
-                            Timber.i("Navigation to $trainLocation")
-                            onNavigateToDetail(trainLocation.trip) },
-                    ),
-                    trainLocation = trainLocation,
+        Column {
+            Row {
+                Image(
+                    painter = painterResource(R.drawable.septa_logo),
+                    contentDescription = stringResource(R.string.septa_logo),
+                    modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 8.dp),
                 )
+            }
+
+            Row {
+                Map(
+                    modifier = Modifier.verticalScroll(rememberScrollState()),
+                    trainLocations = trainState.trainLocations.trainLocations,
+                )
+
+                LazyColumn(
+                    modifier = Modifier.background(color = MaterialTheme.colorScheme.background)
+                ) {
+                    items(trainState.trainLocations.trainLocations) { trainLocation ->
+                        Train(
+                            modifier = Modifier.clickable(
+                                onClick = {
+                                    Timber.i("Navigation to $trainLocation")
+                                    onNavigateToDetail(trainLocation.trip)
+                                },
+                            ),
+                            trainLocation = trainLocation,
+                        )
+                    }
+                }
+
             }
         }
     }

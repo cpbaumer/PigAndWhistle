@@ -56,3 +56,11 @@ data class TrainLocation(
         )
     }
 }
+
+fun TrainLocation.getDirection(): Direction {
+    return when {
+        destination.contains("Norristown") -> Direction.Norristown
+        destination.contains("69") -> Direction.SixtyNinthSt
+        else -> Direction.Unknown
+    }
+}
